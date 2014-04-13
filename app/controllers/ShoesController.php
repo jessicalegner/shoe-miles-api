@@ -76,4 +76,28 @@ class ShoesController extends \BaseController {
 		//
 	}
 
+	/**
+	 * Get the users shoes
+	 *
+	 * @param int $user
+	 * @return Response
+	 */
+	public function userShoes($user)
+	{
+		$shoes = User::find($user)->shoes()->get();
+
+		if( ! $shoes) {
+			return Response::json([
+				'error' => [
+					'message' => 'No shoes could be found for this user',
+					'code' => '002'
+				]
+			], 404);
+		}
+
+		return Response::json([
+			'data' => $shoes->toArray()
+		], 200);
+	}
+
 }

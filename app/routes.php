@@ -12,3 +12,5 @@
 */
 
 Route::resource('shoes', 'ShoesController');
+
+Route::get('/shoes/user/{user}', 'ShoeController@userShoes');
