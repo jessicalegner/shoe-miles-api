@@ -11,6 +11,6 @@
 |
 */
 
-Route::resource('shoes', 'ShoesController');
+Route::resource('shoes', 'ShoesController', array('except' => array('edit', 'create', 'index')));
 
 Route::get('/shoes/user/{user}', 'ShoeController@userShoes');
