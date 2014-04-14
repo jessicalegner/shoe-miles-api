@@ -11,6 +11,8 @@
 |
 */
 
-Route::resource('shoes', 'ShoesController', array('except' => array('edit', 'create', 'index')));
+Route::group(['prefix' => 'api/v1'], function() {
+	Route::resource('shoes', 'ShoesController', array('except' => array('edit', 'create', 'index')));
 
-Route::get('/shoes/user/{user}', 'ShoeController@userShoes');
+	Route::get('/shoes/user/{user}', 'ShoeController@userShoes');
+});
