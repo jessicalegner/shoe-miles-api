@@ -58,7 +58,11 @@ class ShoesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$shoe = Shoe::find($id);
+
+		$shoe->delete();
+
+		return Response::json(Shoe::all()->toArray(), 200);
 	}
 
 	/**
