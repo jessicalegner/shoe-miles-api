@@ -20,7 +20,18 @@ class ShoesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$shoe = Shoe::find($id)->first();
+
+		if( ! $shoe) {
+			return Response::json([
+				'error' => [
+					'message' => 'That shoe could not be found.',
+					'code' => '001'
+				]
+			], 404);
+		}
+
+		return Response::json($shoe->toArray(), 200);
 	}
 
 	/**
@@ -31,7 +42,12 @@ class ShoesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$shoe = Shoe::find($id);
+		$shoe->miles = Input::get('miles');
+
+		$shoe->save();
+
+		return Response::json($shoe->toArray(), 200);
 	}
 
 	/**
@@ -68,5 +84,4 @@ class ShoesController extends \BaseController {
 			'data' => $shoes->toArray()
 		], 200);
 	}
-
 }
