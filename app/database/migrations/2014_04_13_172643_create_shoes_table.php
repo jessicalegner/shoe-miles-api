@@ -18,7 +18,7 @@ class CreateShoesTable extends Migration {
 			$table->string('brand');
 			$table->string('style');
 			$table->date('purchase_date');
-			$table->integer('miles')->default(0);
+			$table->decimal('miles')->default(0);
 			$table->timestamps();
 		});
 	}
