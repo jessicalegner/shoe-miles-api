@@ -28,7 +28,7 @@ class ShoesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$shoe = Shoe::find($id)->first();
+		$shoe = Shoe::find($id);
 
 		if( ! $shoe) {
 			return Response::json([
