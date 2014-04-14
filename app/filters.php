@@ -13,13 +13,20 @@
 
 App::before(function($request)
 {
-	//
+  if (Request::getMethod() == "OPTIONS") {
+      $headers = array(
+      		'Access-Control-Allow-Origin' => '*',
+          'Access-Control-Allow-Methods'=> 'POST, GET, OPTIONS, PUT, DELETE'
+      );
+      return Response::make('', 200, $headers);
+  }
 });
 
 
 App::after(function($request, $response)
 {
-	//
+	$response->header('Access-Control-Allow-Origin', '*');
+  $response->header('Access-Control-Allow-Methods', 'POST,GET,DELETE,PUT,OPTIONS');
 });
 
 /*
