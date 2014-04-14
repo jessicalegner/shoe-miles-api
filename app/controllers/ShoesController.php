@@ -9,7 +9,15 @@ class ShoesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$shoe = new Shoe;
+		$shoe->brand 					= Input::get('brand');
+		$shoe->style 					= Input::get('style');
+		$shoe->purchase_date 	= Input::get('purchase_date');
+		$shoe->miles 					= Input::get('miles');
+
+		$shoe->save();
+
+		return Response::json($shoe->toArray(), 200);
 	}
 
 	/**
