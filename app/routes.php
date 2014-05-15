@@ -11,7 +11,11 @@
 |
 */
 
-Route::group(['prefix' => 'api/v1'], function() {
+Route::get('auth', 'Tappleby\AuthToken\AuthTokenController@index');
+Route::post('auth', 'Tappleby\AuthToken\AuthTokenController@store');
+Route::delete('auth', 'Tappleby\AuthToken\AuthTokenController@destroy');
+
+Route::group(['prefix' => 'api/v1', 'before' => 'auth.token'], function() {
 	Route::resource('shoes', 'ShoesController', array('except' => array('edit', 'create', 'index')));
 
 	Route::get('/shoes/user/{user}', 'ShoeController@userShoes');
