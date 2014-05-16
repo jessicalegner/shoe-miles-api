@@ -92,8 +92,6 @@ class ShoesController extends \BaseController {
 			], 404);
 		}
 
-		return Response::json([
-			'data' => $shoes->toArray()
-		], 200);
+		return Response::json($shoes->toArray(), 200);
 	}
 }
