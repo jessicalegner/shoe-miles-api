@@ -1,6 +1,6 @@
 <?php
 
-class ShoesController extends \BaseController {
+class ShoeController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
@@ -51,7 +51,7 @@ class ShoesController extends \BaseController {
 	public function update($id)
 	{
 		$shoe = Shoe::find($id);
-		$shoe->miles = Input::get('miles');
+		$shoe->miles = $shoe->miles + Input::get('miles');
 
 		$shoe->save();
 
